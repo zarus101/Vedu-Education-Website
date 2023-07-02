@@ -16,7 +16,7 @@ const createContact = asyncHandler(async (req, res) => {
     message,
   });
 
-  res.status(200).json(faq);
+  res.status(200).json(contact);
 });
 
 const getAllContact = asyncHandler(async (req, res) => {

@@ -68,8 +68,12 @@ const getAllCountry = asyncHandler(async (req, res) => {
 
 ///getting course by slug
 const getCountryBySlug = asyncHandler(async (req, res) => {
-  const country = await Country.findById({ slug: req.params.slug });
-  res.status(201).json(country);
+  const country = await Country.findOne({ slug: req.params.slug })
+  if (!country) {
+    res.status(404)
+    throw new Error("Country not found")
+  }
+  res.status(200).json(country)
 });
 
 //getting course ny id

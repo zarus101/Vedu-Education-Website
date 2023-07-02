@@ -5,7 +5,7 @@ const { createBlog, getAllBlogs, getBlogBySlug, getBlogById, deleteBlog, updateB
 const router = express.Router();
 
 router.post("/", upload.single("image"),checkUserAuth, createBlog);
-router.get("/", getAllBlogs);
+router.get("/",checkUserAuth, getAllBlogs);
 router.get("/:slug", getBlogBySlug);
 router.get("/blog-id/:id", getBlogById);
 router.delete("/:id",checkUserAuth, deleteBlog);

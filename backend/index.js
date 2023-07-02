@@ -29,7 +29,9 @@ const countryRoutes = require("./routes/countryRoutes");
 const serviceRoutes = require("./routes/serviceRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 const teamRoutes = require("./routes/teamRoutes");
-const contactRoutes= require("./routes/contactRoutes")
+const contactRoutes= require("./routes/contactRoutes");
+const categoryRoutes= require("./routes/categoryRoutes")
+const careerRoutes= require("./routes/careerRoutes")
 const { createDefaultAdminUser } = require("./controllers/userController");
 const errorHandler = require("./middlewares/errorHandler");
 
@@ -57,6 +59,8 @@ app.use("/vedu/service", serviceRoutes);
 app.use("/vedu/blog", blogRoutes);
 app.use("/vedu/team", teamRoutes);
 app.use("/vedu/contact", contactRoutes)
+app.use("/vedu/category", categoryRoutes)
+app.use("/vedu/career", careerRoutes)
 
 ///error handling
 app.use(errorHandler);

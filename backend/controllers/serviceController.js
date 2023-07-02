@@ -62,8 +62,12 @@ const getAllService = asyncHandler(async (req, res) => {
 
 ///getting course by slug
 const getServiceBySlug = asyncHandler(async (req, res) => {
-  const service = await Service.findById({ slug: req.params.slug });
-  res.status(201).json({ success: true, data: service });
+  const service = await Service.findOne({ slug: req.params.slug })
+  if (!service) {
+    res.status(404)
+    throw new Error("Service not found")
+  }
+  res.status(200).json(service)
 });
 
 //getting course ny id

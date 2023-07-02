@@ -70,8 +70,12 @@ const getAllCourse = asyncHandler(async (req, res) => {
 
 ///getting course by slug
 const getCourseBySlug = asyncHandler(async (req, res) => {
-  const course = await Course.findById({ slug: req.params.slug });
-  res.status(201).json({ success: true, data: course });
+  const course = await Course.findOne({ slug: req.params.slug })
+  if (!course) {
+    res.status(404)
+    throw new Error("Career not found")
+  }
+  res.status(200).json(course)
 });
 
 //getting course ny id
